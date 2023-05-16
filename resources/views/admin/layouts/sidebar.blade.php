@@ -53,6 +53,15 @@
             </p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="{{route('kutubusitah.index')}}" class="nav-link">
+            <i class="nav-icon fas fa-quran"></i>
+            <p>
+              Hadist Kutubusitah
+            </p>
+          </a>
+        </li>
+
       </ul>
     </nav>
     <!-- /.sidebar-menu -->
