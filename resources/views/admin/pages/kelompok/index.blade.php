@@ -65,7 +65,8 @@
                     <form action="{{route('kelompok.destroy', $kelompok->id)}}" method="post" class="d-inline">
                       @method('delete')
                       @csrf
-                      <button type="submit" class="btn btn-sm btn-danger">
+                      <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+
                         Hapus
                       </button>
                     </form>
