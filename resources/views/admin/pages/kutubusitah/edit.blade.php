@@ -33,12 +33,13 @@
           </div>
         </div>
         <div class="col-7">
-          <form action="{{route('kutubusitah.store')}}" method="post">
+          <form action="{{route('kutubusitah.update', $kutubusitah->id)}}" method="post">
+            @method('put')
             @csrf
             <div class="form-group">
               <label for="name">Nama</label>
-              <input type="text" name="name" id="name" class="form-control  @error('name') is-invalid @enderror form-sm" placeholder="Masukan kutubusitah..." value="{{old('kutubusitah')}}" />
-              <div id="name" class="invalid-feedback" value="{{$kutubusitah->name}}">
+              <input type="text" name="name" id="name" class="form-control  @error('name') is-invalid @enderror form-sm" placeholder="Masukan kutubusitah..." value="{{$kutubusitah->name}}" />
+              <div id="name" class="invalid-feedback">
                 {{$errors->first('name')}}
               </div>
             </div>

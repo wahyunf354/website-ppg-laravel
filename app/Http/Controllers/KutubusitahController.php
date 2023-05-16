@@ -52,19 +52,26 @@ class KutubusitahController extends Controller
         return view('admin.pages.kutubusitah.edit', compact('kutubusitah'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        };
+
+        $kutubusitah = Kutubusitah::find($id);
+        $kutubusitah->name = $request->name;
+        $kutubusitah->save();
+
+        return redirect()->route('kutubusitah.index')->with('success', 'Berhasil mengubah data kutubusitah');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        //
+        Kutubusitah::destroy($id);
+        return redirect()->route('kutubusitah.index')->with('warning', 'Berhasil menghapus data kutubusitah');
     }
 }

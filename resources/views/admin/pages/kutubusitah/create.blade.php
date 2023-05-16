@@ -37,7 +37,7 @@
             @csrf
             <div class="form-group">
               <label for="name">Nama</label>
-              <input type="text" name="name" id="name" class="form-control  @error('name') is-invalid @enderror form-sm" placeholder="Masukan kutubusitah..." value="{{old('kutubusitah')}}" />
+              <input type="text" name="name" id="name" class="form-control  @error('name') is-invalid @enderror form-sm" placeholder="Masukan kutubusitah..." value="{{old('name')}}" />
               <div id="name" class="invalid-feedback">
                 {{$errors->first('name')}}
               </div>
