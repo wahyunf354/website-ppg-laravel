@@ -11,8 +11,9 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item" href="{{route('dashboard')}}">Dashboard</li>
-            <li class="breadcrumb-item active">Desa</li>
+            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{route('desa.index')}}">Desa</a></li>
+            <li class="breadcrumb-item active">Menambah Data Desa</li>
           </ol>
         </div>
       </div>
@@ -36,7 +37,10 @@
             @csrf
             <div class="form-group">
               <label for="name">Nama</label>
-              <input type="text" name="name" id="name" class="form-control form-sm" placeholder="Masukan Desa..." value="{{old('desa')}}" />
+              <input type="text" name="name" id="name" class="form-control  @error('name') is-invalid @enderror form-sm" placeholder="Masukan Desa..." value="{{old('desa')}}" />
+              <div id="name" class="invalid-feedback">
+                {{$errors->first('name')}}
+              </div>
             </div>
 
             <div class="form-group">

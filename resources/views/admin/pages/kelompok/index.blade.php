@@ -13,12 +13,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Desa</h1>
+          <h1>Kelompok</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
-            <li class="breadcrumb-item active">Desa</li>
+            <li class="breadcrumb-item active">Kelompok</li>
           </ol>
         </div>
       </div>
@@ -41,26 +41,28 @@
         @endif
         <div class="card">
           <div class="card-header">
-            <a href="{{route('desa.create')}}" class="btn btn-sm btn-outline-primary">Tambah Data Desa</a>
+            <a href="{{route('kelompok.create')}}" class="btn btn-sm btn-outline-primary">Tambah Data kelompok</a>
           </div>
           <div class="card-body">
-            <table id="table_desa" class="table table-bordered table-striped">
+            <table id="table_kelompok" class="table table-bordered table-striped">
               <thead>
                 <tr>
                   <th>No</th>
+                  <th>Kelompok</th>
                   <th>Desa</th>
                   <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
 
-                @foreach($desas as $key => $desa)
+                @foreach($kelompoks as $key => $kelompok)
                 <tr>
                   <td>{{$key +1}}</td>
-                  <td>{{$desa->name}}</td>
+                  <td>{{$kelompok->name}}</td>
+                  <td>{{$kelompok->desa->name}}</td>
                   <td>
-                    <a href="{{route('desa.edit', $desa->id)}}" class="btn btn-sm btn-info">Edit</a>
-                    <form action="{{route('desa.destroy', $desa->id)}}" method="post" class="d-inline">
+                    <a href="{{route('kelompok.edit', $kelompok->id)}}" class="btn btn-sm btn-info">Edit</a>
+                    <form action="{{route('kelompok.destroy', $kelompok->id)}}" method="post" class="d-inline">
                       @method('delete')
                       @csrf
                       <button type="submit" class="btn btn-sm btn-danger">
@@ -102,13 +104,7 @@
 <!-- Page specific script -->
 <script>
   $(function() {
-    $("#example1").DataTable({
-      "responsive": true
-      , "lengthChange": false
-      , "autoWidth": false
-      , "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#table_desa').DataTable({
+    $('#table_kelompok').DataTable({
       "paging": true
       , "lengthChange": false
       , "searching": false

@@ -8,6 +8,16 @@ use Illuminate\Support\Facades\Validator;
 
 class DesaController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $desas = Desa::all();
@@ -60,6 +70,7 @@ class DesaController extends Controller
 
     public function destroy($id)
     {
-        // TODO: Delete Desa
+        Desa::destroy($id);
+        return redirect()->route('desa.index')->with('warning', 'Berhasil menghapus data desa');
     }
 }

@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\DesaController;
 use App\Http\Controllers\JamaahController;
+use App\Http\Controllers\KelompokController;
 use App\Http\Controllers\LandingPageController;
+use App\Models\Kelompok;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -23,4 +25,5 @@ Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 Route::resource('/jamaah', JamaahController::class);
-Route::resource('/desa', DesaController::class);
+Route::resource('/desa', DesaController::class)->except('show');
+Route::resource('/kelompok', KelompokController::class)->except('show');

@@ -7,13 +7,13 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Desa</h1>
+          <h1>Kelompok</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="{{route('desa.index')}}">Desa</a></li>
-            <li class="breadcrumb-item active">Mengubah Data Desa</li>
+            <li class="breadcrumb-item"><a href="{{route('kelompok.index')}}">Kelompok</a></li>
+            <li class="breadcrumb-item active">Menambah Data Kelompok</li>
           </ol>
         </div>
       </div>
@@ -26,21 +26,34 @@
       <div class="card-body row">
         <div class="col-5 text-center d-flex align-items-center justify-content-center">
           <div class="">
-            <h2>Mengubah Data <strong>Desa</strong></h2>
+            <h2>Menambah Data <strong>Kelompok</strong></h2>
             <p class="lead mb-5">
-              Desa yang diinputkan adalah desa dari Medan Timur 1
+              Kelompok yang diinputkan adalah Kelompok dari Medan Timur 1
             </p>
           </div>
         </div>
         <div class="col-7">
-          <form action="{{route('desa.update', $desa->id)}}" method="post">
-            @method('put')
+          <form action="{{route('kelompok.store')}}" method="post">
             @csrf
             <div class="form-group">
               <label for="name">Nama</label>
-              <input type="text" name="name" id="name" class="form-control form-sm @error('name') is-invalid @enderror" placeholder="Masukan Desa..." value="{{$desa->name}}" />
+              <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror form-sm" placeholder="Masukan kelompok..." value="{{old('name')}}" />
               <div id="name" class="invalid-feedback">
                 {{$errors->first('name')}}
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="desa">Desa</label>
+              <select type="text" name="desa" id="desa" class="form-control form-sm @error('desa') is-invalid @enderror">
+
+                <option value="">-- Pilih Desa ---</option>
+                @foreach($desas as $key => $row)
+                <option value="{{$row->id}}">{{$row->name}}</option>
+                @endforeach
+              </select>
+              <div id="desa" class="invalid-feedback">
+                {{$errors->first('desa')}}
               </div>
             </div>
 

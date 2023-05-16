@@ -12,4 +12,10 @@ class Kelompok extends Model
     use HasFactory, SoftDeletes, HasUuids;
 
     protected $fillable = ['name', 'desa_id'];
+
+
+    public function desa()
+    {
+        return $this->belongsTo(Desa::class, 'desa_id', 'id');
+    }
 }

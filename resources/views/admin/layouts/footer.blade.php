@@ -9,7 +9,7 @@
 <!-- AdminLTE App -->
 <script src="{{asset('assets_admin')}}/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="{{asset('assets_admin')}}/dist/js/demo.js"></script>
+{{-- <script src="{{asset('assets_admin')}}/dist/js/demo.js"></script> --}}
 
 @yield('js')
 
